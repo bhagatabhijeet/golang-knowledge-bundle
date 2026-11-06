@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340" role="img" aria-labelledby="t d">
+  <title id="t">Copies, pointers and escape analysis</title>
+  <desc id="d">Passing a value copies it, so changes stay local. Passing a pointer shares the original. When a pointer outlives its function, the compiler moves the value to the heap; this is called escaping.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#FDDD00"/>
+    </marker>
+  </defs>
+  <rect width="800" height="340" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="40" y="46" fill="#E2E8F0" font-size="22" font-weight="700">Copies, pointers, and the heap</text>
+    <text x="40" y="70" fill="#94A3B8" font-size="14">Go passes everything by value; a pointer is just a value that holds an address</text>
+
+    <!-- value -->
+    <rect x="40" y="96" width="230" height="210" rx="14" fill="#1E293B" stroke="#5DC9E2" stroke-width="2"/>
+    <text x="155" y="124" fill="#5DC9E2" font-size="15" font-weight="700" text-anchor="middle">bumpCopy(p)</text>
+    <rect x="62" y="142" width="186" height="46" rx="8" fill="#0F172A" stroke="#334155"/>
+    <text x="76" y="171" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="13">main: p.Score = 0</text>
+    <rect x="62" y="200" width="186" height="46" rx="8" fill="#0F172A" stroke="#5DC9E2" stroke-dasharray="5 4"/>
+    <text x="76" y="229" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="13">copy: Score = 10</text>
+    <text x="155" y="280" fill="#94A3B8" font-size="12.5" text-anchor="middle">original untouched</text>
+
+    <!-- pointer -->
+    <rect x="285" y="96" width="230" height="210" rx="14" fill="#1E293B" stroke="#00A29C" stroke-width="2"/>
+    <text x="400" y="124" fill="#00A29C" font-size="15" font-weight="700" text-anchor="middle">bumpPtr(&amp;p)</text>
+    <rect x="307" y="142" width="186" height="46" rx="8" fill="#0F172A" stroke="#00A29C" stroke-width="2"/>
+    <text x="321" y="171" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="13">main: p.Score = 10</text>
+    <rect x="307" y="216" width="100" height="40" rx="8" fill="#0F172A" stroke="#334155"/>
+    <text x="321" y="241" fill="#FDDD00" font-family="Consolas, Menlo, monospace" font-size="13">p *Player</text>
+    <path d="M410 236 C 460 236, 470 210, 440 192" stroke="#FDDD00" stroke-width="2" fill="none" marker-end="url(#a)"/>
+    <text x="400" y="280" fill="#94A3B8" font-size="12.5" text-anchor="middle">shared, mutated in place</text>
+
+    <!-- escape -->
+    <rect x="530" y="96" width="230" height="210" rx="14" fill="#1E293B" stroke="#CE3262" stroke-width="2"/>
+    <text x="645" y="124" fill="#CE3262" font-size="15" font-weight="700" text-anchor="middle">return &amp;p</text>
+    <text x="552" y="152" fill="#94A3B8" font-size="12">stack frame (gone after return)</text>
+    <rect x="552" y="160" width="186" height="34" rx="8" fill="#0F172A" stroke="#334155" stroke-dasharray="4 4"/>
+    <text x="566" y="182" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="12.5">newPlayer()</text>
+    <text x="552" y="218" fill="#94A3B8" font-size="12">heap (lives while referenced)</text>
+    <rect x="552" y="226" width="186" height="34" rx="8" fill="#CE3262" fill-opacity="0.2" stroke="#CE3262"/>
+    <text x="566" y="248" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="12.5">Player{"Grace"}</text>
+    <text x="645" y="284" fill="#94A3B8" font-size="12.5" text-anchor="middle">“moved to heap: p”</text>
+  </g>
+</svg>

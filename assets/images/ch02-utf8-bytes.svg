@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" width="800" height="330" role="img" aria-labelledby="t d">
+  <title id="t">Bytes versus runes</title>
+  <desc id="d">The string "hé世" is 6 bytes but 3 runes: h is one byte 0x68, é is two bytes 0xC3 0xA9, and 世 is three bytes 0xE4 0xB8 0x96. len counts bytes; range iterates runes.</desc>
+  <rect width="800" height="330" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="40" y="46" fill="#E2E8F0" font-size="22" font-weight="700">A string is bytes; text is runes</text>
+    <text x="40" y="70" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="14">s := "hé世"     len(s) == 6     utf8.RuneCountInString(s) == 3</text>
+
+    <text x="40" y="118" fill="#5DC9E2" font-size="14" font-weight="700">runes</text>
+    <g text-anchor="middle">
+      <rect x="120" y="94" width="90" height="48" rx="10" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+      <text x="165" y="126" fill="#E2E8F0" font-size="22">h</text>
+      <rect x="220" y="94" width="180" height="48" rx="10" fill="#1E293B" stroke="#00A29C" stroke-width="2"/>
+      <text x="310" y="126" fill="#E2E8F0" font-size="22">é</text>
+      <rect x="410" y="94" width="270" height="48" rx="10" fill="#1E293B" stroke="#CE3262" stroke-width="2"/>
+      <text x="545" y="126" fill="#E2E8F0" font-size="22">世</text>
+      <g font-family="Consolas, Menlo, monospace" font-size="12" fill="#94A3B8">
+        <text x="165" y="162">U+0068</text>
+        <text x="310" y="162">U+00E9</text>
+        <text x="545" y="162">U+4E16</text>
+      </g>
+    </g>
+
+    <text x="40" y="214" fill="#5DC9E2" font-size="14" font-weight="700">bytes</text>
+    <g font-family="Consolas, Menlo, monospace" font-size="15" text-anchor="middle">
+      <rect x="120" y="188" width="90" height="44" fill="#00ADD8" fill-opacity="0.22" stroke="#00ADD8" stroke-width="2"/>
+      <text x="165" y="216" fill="#E2E8F0">68</text>
+      <rect x="220" y="188" width="85" height="44" fill="#00A29C" fill-opacity="0.22" stroke="#00A29C" stroke-width="2"/>
+      <text x="262" y="216" fill="#E2E8F0">C3</text>
+      <rect x="315" y="188" width="85" height="44" fill="#00A29C" fill-opacity="0.22" stroke="#00A29C" stroke-width="2"/>
+      <text x="357" y="216" fill="#E2E8F0">A9</text>
+      <rect x="410" y="188" width="83" height="44" fill="#CE3262" fill-opacity="0.22" stroke="#CE3262" stroke-width="2"/>
+      <text x="451" y="216" fill="#E2E8F0">E4</text>
+      <rect x="503" y="188" width="83" height="44" fill="#CE3262" fill-opacity="0.22" stroke="#CE3262" stroke-width="2"/>
+      <text x="544" y="216" fill="#E2E8F0">B8</text>
+      <rect x="596" y="188" width="84" height="44" fill="#CE3262" fill-opacity="0.22" stroke="#CE3262" stroke-width="2"/>
+      <text x="638" y="216" fill="#E2E8F0">96</text>
+      <g font-size="12" fill="#94A3B8">
+        <text x="165" y="252">s[0]</text><text x="262" y="252">s[1]</text><text x="357" y="252">s[2]</text>
+        <text x="451" y="252">s[3]</text><text x="544" y="252">s[4]</text><text x="638" y="252">s[5]</text>
+      </g>
+    </g>
+    <text x="40" y="294" fill="#FDDD00" font-size="14">s[i] gives a byte ·  for i, r := range s  gives byte offset i and a rune r (offsets 0, 1, 3)</text>
+  </g>
+</svg>

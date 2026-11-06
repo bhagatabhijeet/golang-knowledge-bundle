@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-labelledby="t d">
+  <title id="t">defer runs last-in, first-out</title>
+  <desc id="d">Each defer statement pushes a call onto a stack. When the function returns, the stack unwinds: the last deferred call runs first.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <rect width="800" height="300" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="40" y="46" fill="#E2E8F0" font-size="22" font-weight="700">defer: a stack of “do this on the way out”</text>
+    <g font-family="Consolas, Menlo, monospace" font-size="13.5">
+      <rect x="40" y="76" width="330" height="190" rx="14" fill="#1E293B" stroke="#5DC9E2" stroke-width="2"/>
+      <text x="60" y="108" fill="#5DC9E2">func work() {</text>
+      <text x="80" y="136" fill="#E2E8F0">f := open()</text>
+      <text x="80" y="162" fill="#00A29C">defer f.Close()</text>
+      <text x="80" y="188" fill="#FDDD00">defer log("done")</text>
+      <text x="80" y="214" fill="#E2E8F0">process(f)</text>
+      <text x="60" y="242" fill="#5DC9E2">}  ← return</text>
+    </g>
+    <line x1="380" y1="170" x2="440" y2="170" stroke="#94A3B8" stroke-width="2" marker-end="url(#a)"/>
+    <text x="460" y="96" fill="#94A3B8" font-size="13">defer stack at return</text>
+    <rect x="460" y="108" width="200" height="48" rx="8" fill="#FDDD00" fill-opacity="0.18" stroke="#FDDD00" stroke-width="2"/>
+    <text x="476" y="138" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="13.5">log("done")</text>
+    <rect x="460" y="164" width="200" height="48" rx="8" fill="#00A29C" fill-opacity="0.18" stroke="#00A29C" stroke-width="2"/>
+    <text x="476" y="194" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="13.5">f.Close()</text>
+    <text x="680" y="138" fill="#FDDD00" font-size="14" font-weight="700">1st</text>
+    <text x="680" y="194" fill="#00A29C" font-size="14" font-weight="700">2nd</text>
+    <text x="460" y="246" fill="#94A3B8" font-size="13">Runs even if process() panics.</text>
+    <text x="460" y="266" fill="#94A3B8" font-size="13">Arguments are evaluated at the defer line.</text>
+  </g>
+</svg>

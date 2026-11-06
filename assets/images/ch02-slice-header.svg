@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-labelledby="t d">
+  <title id="t">A slice is a window onto an array</title>
+  <desc id="d">The slice s := arr[1:3] has a header with a pointer to arr[1], length 2 and capacity 4. It sees elements 20 and 30; elements 40 and 50 are spare capacity that append can reuse.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#FDDD00"/>
+    </marker>
+  </defs>
+  <rect width="800" height="380" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="40" y="46" fill="#E2E8F0" font-size="22" font-weight="700">A slice is a window onto an array</text>
+    <text x="40" y="70" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="14">arr := [5]int{10, 20, 30, 40, 50}    s := arr[1:3]</text>
+
+    <!-- header -->
+    <text x="40" y="112" fill="#00ADD8" font-size="15" font-weight="700">slice header (24 bytes on 64-bit)</text>
+    <g font-family="Consolas, Menlo, monospace" font-size="15">
+      <rect x="40" y="124" width="130" height="56" rx="8" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+      <text x="56" y="148" fill="#94A3B8" font-size="12">ptr</text>
+      <text x="56" y="170" fill="#FDDD00">&amp;arr[1]</text>
+      <rect x="170" y="124" width="110" height="56" rx="8" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+      <text x="186" y="148" fill="#94A3B8" font-size="12">len</text>
+      <text x="186" y="170" fill="#E2E8F0">2</text>
+      <rect x="280" y="124" width="110" height="56" rx="8" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+      <text x="296" y="148" fill="#94A3B8" font-size="12">cap</text>
+      <text x="296" y="170" fill="#E2E8F0">4</text>
+    </g>
+    <path d="M105 182 C105 220, 230 210, 236 244" stroke="#FDDD00" stroke-width="2.5" fill="none" marker-end="url(#a)"/>
+
+    <!-- backing array -->
+    <text x="40" y="236" fill="#94A3B8" font-size="13">backing array</text>
+    <g font-family="Consolas, Menlo, monospace" font-size="18" text-anchor="middle">
+      <rect x="140" y="250" width="96" height="56" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+      <text x="188" y="285" fill="#94A3B8">10</text>
+      <rect x="236" y="250" width="96" height="56" fill="#00ADD8" fill-opacity="0.25" stroke="#00ADD8" stroke-width="2"/>
+      <text x="284" y="285" fill="#E2E8F0">20</text>
+      <rect x="332" y="250" width="96" height="56" fill="#00ADD8" fill-opacity="0.25" stroke="#00ADD8" stroke-width="2"/>
+      <text x="380" y="285" fill="#E2E8F0">30</text>
+      <rect x="428" y="250" width="96" height="56" fill="#1E293B" stroke="#00A29C" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="476" y="285" fill="#00A29C">40</text>
+      <rect x="524" y="250" width="96" height="56" fill="#1E293B" stroke="#00A29C" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="572" y="285" fill="#00A29C">50</text>
+    </g>
+    <g font-family="Consolas, Menlo, monospace" font-size="12" fill="#94A3B8" text-anchor="middle">
+      <text x="188" y="324">[0]</text><text x="284" y="324">[1]</text><text x="380" y="324">[2]</text><text x="476" y="324">[3]</text><text x="572" y="324">[4]</text>
+    </g>
+    <!-- braces -->
+    <path d="M238 244 V236 H426 V244" stroke="#00ADD8" stroke-width="2" fill="none"/>
+    <text x="332" y="228" fill="#00ADD8" font-size="13" text-anchor="middle">len = 2 (visible)</text>
+    <path d="M238 336 V344 H618 V336" stroke="#00A29C" stroke-width="2" fill="none"/>
+    <text x="428" y="364" fill="#00A29C" font-size="13" text-anchor="middle">cap = 4 (len + spare room)</text>
+    <text x="640" y="262" fill="#94A3B8" font-size="12.5">spare room:</text>
+    <text x="640" y="280" fill="#94A3B8" font-size="12.5">append writes</text>
+    <text x="640" y="298" fill="#94A3B8" font-size="12.5">here first</text>
+  </g>
+</svg>

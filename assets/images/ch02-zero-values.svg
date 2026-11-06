@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-labelledby="t d">
+  <title id="t">Every type has a zero value</title>
+  <desc id="d">Declared but unassigned variables get a zero value: 0 for numbers, empty string for strings, false for bools, nil for pointers, slices, maps, channels, funcs and interfaces, and a struct with all fields zeroed.</desc>
+  <rect width="800" height="300" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="40" y="46" fill="#E2E8F0" font-size="22" font-weight="700">Nothing is ever “uninitialized”</text>
+    <text x="40" y="70" fill="#94A3B8" font-size="14">Declare a variable and Go fills it with that type's zero value</text>
+    <g font-family="Consolas, Menlo, monospace" font-size="15">
+      <g transform="translate(40,96)">
+        <rect width="230" height="80" rx="12" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+        <text x="18" y="32" fill="#94A3B8">int, float64</text>
+        <text x="18" y="62" fill="#00ADD8" font-size="24" font-weight="700">0</text>
+      </g>
+      <g transform="translate(285,96)">
+        <rect width="230" height="80" rx="12" fill="#1E293B" stroke="#5DC9E2" stroke-width="2"/>
+        <text x="18" y="32" fill="#94A3B8">string</text>
+        <text x="18" y="62" fill="#5DC9E2" font-size="24" font-weight="700">""</text>
+      </g>
+      <g transform="translate(530,96)">
+        <rect width="230" height="80" rx="12" fill="#1E293B" stroke="#00A29C" stroke-width="2"/>
+        <text x="18" y="32" fill="#94A3B8">bool</text>
+        <text x="18" y="62" fill="#00A29C" font-size="24" font-weight="700">false</text>
+      </g>
+      <g transform="translate(40,190)">
+        <rect width="475" height="80" rx="12" fill="#1E293B" stroke="#CE3262" stroke-width="2"/>
+        <text x="18" y="32" fill="#94A3B8">*T  []T  map[K]V  chan T  func  interface</text>
+        <text x="18" y="62" fill="#CE3262" font-size="24" font-weight="700">nil</text>
+      </g>
+      <g transform="translate(530,190)">
+        <rect width="230" height="80" rx="12" fill="#1E293B" stroke="#FDDD00" stroke-width="2"/>
+        <text x="18" y="32" fill="#94A3B8">struct{X int; S string}</text>
+        <text x="18" y="62" fill="#FDDD00" font-size="20" font-weight="700">{0 ""}</text>
+      </g>
+    </g>
+  </g>
+</svg>
