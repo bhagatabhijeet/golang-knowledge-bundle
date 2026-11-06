@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" role="img" aria-labelledby="t d">
+  <title id="t">Anatomy of a Go module</title>
+  <desc id="d">A module is a tree of packages defined by go.mod. Each directory is one package made of one or more .go files. Capitalized names are exported outside the package.</desc>
+  <rect width="800" height="360" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="40" y="46" fill="#E2E8F0" font-size="22" font-weight="700">Anatomy of a Go module</text>
+    <text x="40" y="70" fill="#94A3B8" font-size="14">module ⊃ packages ⊃ files · one directory = one package</text>
+
+    <rect x="40" y="92" width="720" height="240" rx="14" fill="none" stroke="#00ADD8" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="60" y="118" fill="#00ADD8" font-size="15" font-weight="700">module example.com/shop</text>
+    <text x="270" y="118" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="13">go.mod · go.sum</text>
+
+    <!-- package main -->
+    <rect x="60" y="136" width="200" height="176" rx="12" fill="#1E293B" stroke="#FDDD00" stroke-width="2"/>
+    <text x="78" y="162" fill="#FDDD00" font-size="14" font-weight="700">package main</text>
+    <text x="78" y="182" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="12">./cmd/shop/</text>
+    <rect x="78" y="196" width="164" height="30" rx="6" fill="#0F172A"/>
+    <text x="90" y="216" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="12.5">main.go</text>
+    <text x="78" y="254" fill="#94A3B8" font-size="12">func main() is the</text>
+    <text x="78" y="272" fill="#94A3B8" font-size="12">entry point of the</text>
+    <text x="78" y="290" fill="#94A3B8" font-size="12">executable</text>
+
+    <!-- package cart -->
+    <rect x="300" y="136" width="200" height="176" rx="12" fill="#1E293B" stroke="#00A29C" stroke-width="2"/>
+    <text x="318" y="162" fill="#00A29C" font-size="14" font-weight="700">package cart</text>
+    <text x="318" y="182" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="12">./cart/</text>
+    <rect x="318" y="196" width="164" height="30" rx="6" fill="#0F172A"/>
+    <text x="330" y="216" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="12.5">cart.go</text>
+    <rect x="318" y="232" width="164" height="30" rx="6" fill="#0F172A"/>
+    <text x="330" y="252" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="12.5">cart_test.go</text>
+    <text x="318" y="290" fill="#94A3B8" font-size="12">many files, one package</text>
+
+    <!-- exported vs unexported -->
+    <rect x="540" y="136" width="200" height="176" rx="12" fill="#1E293B" stroke="#CE3262" stroke-width="2"/>
+    <text x="558" y="162" fill="#CE3262" font-size="14" font-weight="700">Visibility rule</text>
+    <text x="558" y="194" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="13">cart.Total()</text>
+    <text x="558" y="212" fill="#00A29C" font-size="12">Capital → exported ✓</text>
+    <text x="558" y="244" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="13">cart.discount()</text>
+    <text x="558" y="262" fill="#CE3262" font-size="12">lowercase → private ✗</text>
+    <text x="558" y="294" fill="#94A3B8" font-size="12">No public/private keywords</text>
+
+    <path d="M262 224 H296" stroke="#94A3B8" stroke-width="2" fill="none"/>
+    <path d="M288 218 L296 224 L288 230" stroke="#94A3B8" stroke-width="2" fill="none"/>
+    <text x="279" y="212" fill="#94A3B8" font-size="11" text-anchor="middle">import</text>
+  </g>
+</svg>
