@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="Unbuffered channel as a direct hand-off where sender and receiver meet, versus buffered channel as a queue of capacity 3 where the sender only blocks when full">
+  <title>Unbuffered vs buffered channels</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#E2E8F0"/>
+    </marker>
+  </defs>
+  <rect width="800" height="420" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="400" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#E2E8F0">Channels: Hand-off vs Mailbox</text>
+
+    <!-- Unbuffered -->
+    <rect x="30" y="60" width="740" height="150" rx="14" fill="#1E293B"/>
+    <text x="50" y="88" font-size="15" font-weight="700" fill="#00ADD8">Unbuffered  ·  make(chan T)</text>
+    <text x="750" y="88" text-anchor="end" font-size="12" fill="#94A3B8">send and receive happen together</text>
+    <rect x="70" y="112" width="150" height="56" rx="12" fill="#00A29C"/>
+    <text x="145" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">sender</text>
+    <text x="145" y="156" text-anchor="middle" font-size="12" fill="#0F172A" font-family="Consolas, Menlo, monospace">ch &lt;- v</text>
+    <rect x="580" y="112" width="150" height="56" rx="12" fill="#5DC9E2"/>
+    <text x="655" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">receiver</text>
+    <text x="655" y="156" text-anchor="middle" font-size="12" fill="#0F172A" font-family="Consolas, Menlo, monospace">v := &lt;-ch</text>
+    <line x1="224" y1="140" x2="372" y2="140" stroke="#E2E8F0" stroke-width="2.5" marker-end="url(#a)"/>
+    <line x1="576" y1="140" x2="428" y2="140" stroke="#E2E8F0" stroke-width="2.5" marker-end="url(#a)"/>
+    <circle cx="400" cy="140" r="22" fill="#FDDD00"/>
+    <text x="400" y="146" text-anchor="middle" font-size="16" font-weight="700" fill="#0F172A">v</text>
+    <text x="400" y="192" text-anchor="middle" font-size="12" fill="#FDDD00">rendezvous: whoever arrives first waits</text>
+
+    <!-- Buffered -->
+    <rect x="30" y="230" width="740" height="170" rx="14" fill="#1E293B"/>
+    <text x="50" y="258" font-size="15" font-weight="700" fill="#00ADD8">Buffered  ·  make(chan T, 3)</text>
+    <text x="750" y="258" text-anchor="end" font-size="12" fill="#94A3B8">FIFO queue between goroutines</text>
+    <rect x="70" y="290" width="150" height="56" rx="12" fill="#00A29C"/>
+    <text x="145" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">sender</text>
+    <text x="145" y="334" text-anchor="middle" font-size="11" fill="#0F172A">blocks only when full</text>
+    <rect x="580" y="290" width="150" height="56" rx="12" fill="#5DC9E2"/>
+    <text x="655" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">receiver</text>
+    <text x="655" y="334" text-anchor="middle" font-size="11" fill="#0F172A">blocks only when empty</text>
+    <line x1="224" y1="318" x2="282" y2="318" stroke="#E2E8F0" stroke-width="2.5" marker-end="url(#a)"/>
+    <rect x="290" y="290" width="220" height="56" rx="10" fill="#0F172A" stroke="#00ADD8" stroke-width="2"/>
+    <rect x="302" y="300" width="60" height="36" rx="6" fill="#FDDD00"/><text x="332" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">3</text>
+    <rect x="370" y="300" width="60" height="36" rx="6" fill="#FDDD00"/><text x="400" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">2</text>
+    <rect x="438" y="300" width="60" height="36" rx="6" fill="#334155" stroke="#94A3B8" stroke-dasharray="4 3"/><text x="468" y="324" text-anchor="middle" font-size="12" fill="#94A3B8">free</text>
+    <line x1="514" y1="318" x2="572" y2="318" stroke="#E2E8F0" stroke-width="2.5" marker-end="url(#a)"/>
+    <text x="400" y="372" text-anchor="middle" font-size="12" fill="#E2E8F0" font-family="Consolas, Menlo, monospace">len(ch) == 2   cap(ch) == 3</text>
+    <text x="400" y="390" text-anchor="middle" font-size="12" fill="#94A3B8">values leave in the order they arrived (oldest first)</text>
+  </g>
+</svg>

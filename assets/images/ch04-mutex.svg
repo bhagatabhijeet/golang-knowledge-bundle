@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-label="Mutex lets one goroutine at a time into the critical section; RWMutex lets many readers in together but a writer alone">
+  <title>Mutex vs RWMutex</title>
+  <rect width="800" height="380" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="400" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#E2E8F0">Guarding Shared State</text>
+
+    <!-- Mutex -->
+    <rect x="30" y="60" width="360" height="290" rx="14" fill="#1E293B"/>
+    <text x="210" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#00ADD8">sync.Mutex</text>
+    <text x="210" y="110" text-anchor="middle" font-size="12" fill="#94A3B8">one goroutine at a time</text>
+    <g>
+      <circle cx="80" cy="160" r="18" fill="#94A3B8"/><text x="80" y="165" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G2</text>
+      <circle cx="80" cy="210" r="18" fill="#94A3B8"/><text x="80" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G3</text>
+      <circle cx="80" cy="260" r="18" fill="#94A3B8"/><text x="80" y="265" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G4</text>
+      <text x="80" y="300" text-anchor="middle" font-size="11" fill="#94A3B8">waiting</text>
+    </g>
+    <rect x="140" y="140" width="10" height="140" rx="3" fill="#CE3262"/>
+    <text x="145" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="#CE3262">LOCK</text>
+    <rect x="180" y="150" width="180" height="120" rx="12" fill="#0F172A" stroke="#00ADD8" stroke-width="2"/>
+    <text x="270" y="174" text-anchor="middle" font-size="12" fill="#94A3B8">critical section</text>
+    <circle cx="270" cy="215" r="22" fill="#FDDD00"/><text x="270" y="220" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">G1</text>
+    <text x="270" y="258" text-anchor="middle" font-size="11" fill="#E2E8F0" font-family="Consolas, Menlo, monospace">count++</text>
+    <text x="210" y="332" text-anchor="middle" font-size="12" fill="#E2E8F0" font-family="Consolas, Menlo, monospace">mu.Lock(); defer mu.Unlock()</text>
+
+    <!-- RWMutex -->
+    <rect x="410" y="60" width="360" height="290" rx="14" fill="#1E293B"/>
+    <text x="590" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#00ADD8">sync.RWMutex</text>
+    <text x="590" y="110" text-anchor="middle" font-size="12" fill="#94A3B8">many readers OR one writer</text>
+    <rect x="430" y="130" width="320" height="86" rx="12" fill="#0F172A" stroke="#5DC9E2" stroke-width="2"/>
+    <text x="446" y="150" font-size="12" fill="#5DC9E2">RLock(): readers share</text>
+    <circle cx="490" cy="184" r="18" fill="#5DC9E2"/><text x="490" y="189" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">R1</text>
+    <circle cx="545" cy="184" r="18" fill="#5DC9E2"/><text x="545" y="189" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">R2</text>
+    <circle cx="600" cy="184" r="18" fill="#5DC9E2"/><text x="600" y="189" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">R3</text>
+    <circle cx="655" cy="184" r="18" fill="#5DC9E2"/><text x="655" y="189" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">R4</text>
+    <rect x="430" y="232" width="320" height="86" rx="12" fill="#0F172A" stroke="#CE3262" stroke-width="2"/>
+    <text x="446" y="252" font-size="12" fill="#CE3262">Lock(): writer is alone</text>
+    <circle cx="590" cy="284" r="20" fill="#CE3262"/><text x="590" y="289" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">W</text>
+    <text x="680" y="289" text-anchor="middle" font-size="11" fill="#94A3B8">waits for readers</text>
+    <text x="590" y="338" text-anchor="middle" font-size="12" fill="#94A3B8">pays off when reads far outnumber writes</text>
+  </g>
+</svg>

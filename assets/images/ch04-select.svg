@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" role="img" aria-label="A select statement watching three channels, a result channel, a timeout from time.After and a ctx.Done channel; the first ready case runs, and a default case makes it non-blocking">
+  <title>select: the first ready case wins</title>
+  <defs>
+    <marker id="s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+    <marker id="sy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FDDD00"/>
+    </marker>
+  </defs>
+  <rect width="800" height="360" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="400" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#E2E8F0">select: First Ready Case Wins</text>
+
+    <g font-family="Consolas, Menlo, monospace" font-size="13">
+      <rect x="40" y="70" width="230" height="52" rx="10" fill="#1E293B" stroke="#5DC9E2" stroke-width="2"/>
+      <text x="155" y="101" text-anchor="middle" fill="#E2E8F0">case r := &lt;-results</text>
+      <rect x="40" y="150" width="230" height="52" rx="10" fill="#1E293B" stroke="#FDDD00" stroke-width="3"/>
+      <text x="155" y="181" text-anchor="middle" fill="#E2E8F0">case &lt;-time.After(2s)</text>
+      <rect x="40" y="230" width="230" height="52" rx="10" fill="#1E293B" stroke="#CE3262" stroke-width="2"/>
+      <text x="155" y="261" text-anchor="middle" fill="#E2E8F0">case &lt;-ctx.Done()</text>
+    </g>
+    <text x="155" y="300" text-anchor="middle" font-size="11" fill="#94A3B8">several ready at once? one is picked at random</text>
+
+    <line x1="274" y1="96" x2="356" y2="160" stroke="#94A3B8" stroke-width="2" marker-end="url(#s)"/>
+    <line x1="274" y1="176" x2="356" y2="176" stroke="#FDDD00" stroke-width="3" marker-end="url(#sy)"/>
+    <line x1="274" y1="256" x2="356" y2="192" stroke="#94A3B8" stroke-width="2" marker-end="url(#s)"/>
+
+    <rect x="362" y="136" width="130" height="80" rx="40" fill="#00ADD8"/>
+    <text x="427" y="182" text-anchor="middle" font-size="20" font-weight="700" fill="#0F172A">select</text>
+
+    <line x1="496" y1="176" x2="556" y2="176" stroke="#FDDD00" stroke-width="3" marker-end="url(#sy)"/>
+    <rect x="562" y="140" width="200" height="72" rx="12" fill="#FDDD00"/>
+    <text x="662" y="170" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">timeout fired first</text>
+    <text x="662" y="192" text-anchor="middle" font-size="12" fill="#0F172A">run that case's body only</text>
+
+    <rect x="362" y="250" width="400" height="64" rx="12" fill="#1E293B" stroke="#00A29C" stroke-dasharray="6 4" stroke-width="2"/>
+    <text x="562" y="276" text-anchor="middle" font-size="13" font-weight="700" fill="#00A29C" font-family="Consolas, Menlo, monospace">default:</text>
+    <text x="562" y="298" text-anchor="middle" font-size="12" fill="#E2E8F0">nothing ready? run default right away (non-blocking)</text>
+    <text x="562" y="110" text-anchor="middle" font-size="12" fill="#94A3B8">no default: select blocks until some case is ready</text>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460" role="img" aria-label="Go GMP scheduler: goroutines in per-P local run queues and a global run queue, each P bound to an OS thread M running on a CPU core, with work stealing between Ps">
+  <title>The Go scheduler: G, M and P</title>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FDDD00"/>
+    </marker>
+    <marker id="arrb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <rect width="800" height="460" rx="18" fill="#0F172A"/>
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="400" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#E2E8F0">The Go Scheduler: G · M · P</text>
+    <text x="400" y="62" text-anchor="middle" font-size="13" fill="#94A3B8">Many goroutines (G) multiplexed onto a few OS threads (M) through logical processors (P)</text>
+
+    <!-- Global run queue -->
+    <rect x="250" y="82" width="300" height="50" rx="10" fill="#1E293B" stroke="#94A3B8" stroke-dasharray="5 4"/>
+    <text x="262" y="112" font-size="13" fill="#94A3B8">Global run queue</text>
+    <g>
+      <circle cx="420" cy="107" r="13" fill="#00A29C"/><text x="420" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">G</text>
+      <circle cx="452" cy="107" r="13" fill="#00A29C"/><text x="452" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">G</text>
+      <circle cx="484" cy="107" r="13" fill="#00A29C"/><text x="484" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">G</text>
+    </g>
+
+    <!-- P1 column -->
+    <rect x="60" y="160" width="300" height="250" rx="14" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+    <text x="80" y="188" font-size="13" fill="#94A3B8">Local run queue (P1)</text>
+    <g>
+      <circle cx="100" cy="215" r="15" fill="#5DC9E2"/><text x="100" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G</text>
+      <circle cx="138" cy="215" r="15" fill="#5DC9E2"/><text x="138" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G</text>
+      <circle cx="176" cy="215" r="15" fill="#5DC9E2"/><text x="176" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G</text>
+      <circle cx="214" cy="215" r="15" fill="#5DC9E2"/><text x="214" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G</text>
+      <circle cx="252" cy="215" r="15" fill="#5DC9E2"/><text x="252" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G</text>
+    </g>
+    <rect x="150" y="250" width="120" height="44" rx="10" fill="#00ADD8"/>
+    <text x="210" y="278" text-anchor="middle" font-size="16" font-weight="700" fill="#0F172A">P1</text>
+    <circle cx="300" cy="272" r="17" fill="#FDDD00"/><text x="300" y="277" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G</text>
+    <text x="300" y="304" text-anchor="middle" font-size="11" fill="#FDDD00">running</text>
+    <line x1="210" y1="294" x2="210" y2="318" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrb)"/>
+    <rect x="150" y="322" width="120" height="34" rx="8" fill="#0F172A" stroke="#CE3262" stroke-width="2"/>
+    <text x="210" y="344" text-anchor="middle" font-size="13" fill="#E2E8F0">M1 · OS thread</text>
+    <rect x="150" y="366" width="120" height="30" rx="6" fill="#334155"/>
+    <text x="210" y="386" text-anchor="middle" font-size="12" fill="#E2E8F0">CPU core</text>
+
+    <!-- P2 column -->
+    <rect x="440" y="160" width="300" height="250" rx="14" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+    <text x="460" y="188" font-size="13" fill="#94A3B8">Local run queue (P2) · empty</text>
+    <rect x="530" y="250" width="120" height="44" rx="10" fill="#00ADD8"/>
+    <text x="590" y="278" text-anchor="middle" font-size="16" font-weight="700" fill="#0F172A">P2</text>
+    <circle cx="680" cy="272" r="17" fill="#FDDD00"/><text x="680" y="277" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">G</text>
+    <text x="680" y="304" text-anchor="middle" font-size="11" fill="#FDDD00">running</text>
+    <line x1="590" y1="294" x2="590" y2="318" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrb)"/>
+    <rect x="530" y="322" width="120" height="34" rx="8" fill="#0F172A" stroke="#CE3262" stroke-width="2"/>
+    <text x="590" y="344" text-anchor="middle" font-size="13" fill="#E2E8F0">M2 · OS thread</text>
+    <rect x="530" y="366" width="120" height="30" rx="6" fill="#334155"/>
+    <text x="590" y="386" text-anchor="middle" font-size="12" fill="#E2E8F0">CPU core</text>
+
+    <!-- Work stealing -->
+    <path d="M 270 210 C 360 170, 460 170, 535 222" fill="none" stroke="#FDDD00" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arr)"/>
+    <text x="645" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#FDDD00">work stealing</text>
+    <text x="645" y="238" text-anchor="middle" font-size="11" fill="#94A3B8">idle P2 steals half of P1's queue</text>
+    <line x1="400" y1="132" x2="400" y2="152" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="408" y="148" font-size="10" fill="#94A3B8">also checked</text>
+
+    <!-- Legend -->
+    <g font-size="12" fill="#E2E8F0">
+      <circle cx="80" cy="436" r="8" fill="#5DC9E2"/><text x="94" y="440">G = goroutine (~2 KB stack)</text>
+      <rect x="290" y="428" width="16" height="16" rx="3" fill="#00ADD8"/><text x="312" y="440">P = logical processor (GOMAXPROCS)</text>
+      <rect x="560" y="428" width="16" height="16" rx="3" fill="none" stroke="#CE3262" stroke-width="2"/><text x="582" y="440">M = machine (OS thread)</text>
+    </g>
+  </g>
+</svg>
