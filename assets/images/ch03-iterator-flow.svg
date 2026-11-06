@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340" role="img" aria-label="The iterator calls yield for each value; the loop body runs; yield returns false on break and the iterator stops">
+  <rect width="800" height="340" rx="18" fill="#0F172A"/>
+  <text x="400" y="42" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#E2E8F0">Range-over-func: the iterator pushes, your loop body answers</text>
+
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <rect x="35" y="75" width="300" height="230" rx="14" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+    <text x="185" y="104" text-anchor="middle" font-size="16" font-weight="700" fill="#00ADD8">Iterator  (iter.Seq[int])</text>
+    <text x="55" y="140" font-family="Consolas, Menlo, monospace" font-size="14" fill="#E2E8F0">for i := 3; i &gt; 0; i-- {</text>
+    <text x="75" y="166" font-family="Consolas, Menlo, monospace" font-size="14" fill="#FDDD00">if !yield(i) {</text>
+    <text x="95" y="192" font-family="Consolas, Menlo, monospace" font-size="14" fill="#CE3262">return</text>
+    <text x="75" y="218" font-family="Consolas, Menlo, monospace" font-size="14" fill="#FDDD00">}</text>
+    <text x="55" y="244" font-family="Consolas, Menlo, monospace" font-size="14" fill="#E2E8F0">}</text>
+    <text x="185" y="285" text-anchor="middle" font-size="13" fill="#94A3B8">owns the state and the order</text>
+
+    <rect x="465" y="75" width="300" height="230" rx="14" fill="#1E293B" stroke="#00A29C" stroke-width="2"/>
+    <text x="615" y="104" text-anchor="middle" font-size="16" font-weight="700" fill="#00A29C">Your loop</text>
+    <text x="485" y="150" font-family="Consolas, Menlo, monospace" font-size="14" fill="#E2E8F0">for n := range Countdown(3) {</text>
+    <text x="505" y="180" font-family="Consolas, Menlo, monospace" font-size="14" fill="#E2E8F0">fmt.Print(n)</text>
+    <text x="505" y="210" font-family="Consolas, Menlo, monospace" font-size="14" fill="#CE3262">if done { break }</text>
+    <text x="485" y="240" font-family="Consolas, Menlo, monospace" font-size="14" fill="#E2E8F0">}</text>
+    <text x="615" y="285" text-anchor="middle" font-size="13" fill="#94A3B8">compiled into the yield function</text>
+
+    <!-- arrows -->
+    <path d="M335 140 L457 140" stroke="#FDDD00" stroke-width="2.5"/>
+    <path d="M459 140 l-10 -6 v12 z" fill="#FDDD00"/>
+    <text x="400" y="130" text-anchor="middle" font-size="13" fill="#FDDD00">yield(n)</text>
+
+    <path d="M465 190 L343 190" stroke="#00A29C" stroke-width="2.5"/>
+    <path d="M341 190 l10 -6 v12 z" fill="#00A29C"/>
+    <text x="400" y="180" text-anchor="middle" font-size="13" fill="#00A29C">true: keep going</text>
+
+    <path d="M465 225 L343 225" stroke="#CE3262" stroke-width="2.5" stroke-dasharray="6 4"/>
+    <path d="M341 225 l10 -6 v12 z" fill="#CE3262"/>
+    <text x="400" y="248" text-anchor="middle" font-size="13" fill="#CE3262">false: break, stop</text>
+  </g>
+</svg>

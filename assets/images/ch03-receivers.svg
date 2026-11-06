@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" role="img" aria-label="Value receiver gets a copy; pointer receiver points at the original">
+  <rect width="800" height="360" rx="18" fill="#0F172A"/>
+  <text x="400" y="42" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#E2E8F0">Value receiver vs pointer receiver</text>
+
+  <!-- left: value receiver -->
+  <rect x="30" y="70" width="355" height="260" rx="14" fill="#1E293B"/>
+  <text x="207" y="102" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="16" fill="#5DC9E2">func (a Account) M()</text>
+  <rect x="60" y="130" width="130" height="80" rx="10" fill="none" stroke="#00ADD8" stroke-width="2"/>
+  <text x="125" y="160" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#94A3B8">original</text>
+  <text x="125" y="188" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="15" fill="#E2E8F0">Balance: 10</text>
+  <rect x="225" y="130" width="130" height="80" rx="10" fill="none" stroke="#FDDD00" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="290" y="160" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#94A3B8">copy (a)</text>
+  <text x="290" y="188" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="15" fill="#FDDD00">Balance: 99</text>
+  <path d="M190 170 L218 170" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M218 170 l-8 -5 v10 z" fill="#94A3B8"/>
+  <text x="207" y="250" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#E2E8F0">Method works on a copy.</text>
+  <text x="207" y="276" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#CE3262">Changes vanish on return.</text>
+  <text x="207" y="306" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#94A3B8">Use for small, read-only types.</text>
+
+  <!-- right: pointer receiver -->
+  <rect x="415" y="70" width="355" height="260" rx="14" fill="#1E293B"/>
+  <text x="592" y="102" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="16" fill="#5DC9E2">func (a *Account) M()</text>
+  <rect x="445" y="130" width="90" height="80" rx="10" fill="none" stroke="#00A29C" stroke-width="2"/>
+  <text x="490" y="160" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#94A3B8">a</text>
+  <text x="490" y="188" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="15" fill="#E2E8F0">0xc000…</text>
+  <rect x="610" y="130" width="130" height="80" rx="10" fill="none" stroke="#00ADD8" stroke-width="2"/>
+  <text x="675" y="160" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#94A3B8">original</text>
+  <text x="675" y="188" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="15" fill="#00ADD8">Balance: 99</text>
+  <path d="M535 170 L602 170" stroke="#00A29C" stroke-width="2.5"/>
+  <path d="M603 170 l-9 -6 v12 z" fill="#00A29C"/>
+  <text x="592" y="250" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#E2E8F0">Method gets the address.</text>
+  <text x="592" y="276" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#00A29C">Changes stick.</text>
+  <text x="592" y="306" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#94A3B8">Use to mutate, or for large / locked types.</text>
+</svg>
