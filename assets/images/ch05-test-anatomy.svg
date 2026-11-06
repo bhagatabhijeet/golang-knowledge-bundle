@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="Anatomy of a table-driven Go test: a table of cases feeds a loop that runs each case as a named subtest, producing a PASS/FAIL report">
+  <rect width="800" height="420" rx="18" fill="#0F172A"/>
+  <text x="400" y="42" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#E2E8F0">Anatomy of a table-driven test</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#94A3B8">one table · one loop · many named subtests</text>
+
+  <!-- Table -->
+  <rect x="30" y="96" width="230" height="250" rx="12" fill="#1E293B" stroke="#00ADD8" stroke-width="2"/>
+  <text x="145" y="124" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#00ADD8">① The table</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="12.5" fill="#E2E8F0">
+    <text x="46" y="154">tests := []struct{</text>
+    <text x="60" y="174" fill="#94A3B8">name string</text>
+    <text x="60" y="194" fill="#94A3B8">a, b, want int</text>
+    <text x="46" y="214">}{</text>
+    <text x="60" y="236" fill="#5DC9E2">{"zeros", 0, 0, 0},</text>
+    <text x="60" y="258" fill="#5DC9E2">{"pos", 2, 3, 5},</text>
+    <text x="60" y="280" fill="#5DC9E2">{"neg", -4, -6, -10},</text>
+    <text x="60" y="302" fill="#5DC9E2">{"mixed", -2, 7, 5},</text>
+    <text x="46" y="324">}</text>
+  </g>
+
+  <path d="M266 221 L 298 221" stroke="#FDDD00" stroke-width="3" fill="none"/>
+  <path d="M298 213 L 312 221 L 298 229 Z" fill="#FDDD00"/>
+
+  <!-- Loop -->
+  <rect x="318" y="96" width="210" height="250" rx="12" fill="#1E293B" stroke="#00A29C" stroke-width="2"/>
+  <text x="423" y="124" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#00A29C">② The loop</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="12.5" fill="#E2E8F0">
+    <text x="332" y="160">for _, tt := range tests {</text>
+    <text x="344" y="184" fill="#FDDD00">t.Run(tt.name, func(…) {</text>
+    <text x="356" y="208" fill="#94A3B8">t.Parallel()</text>
+    <text x="356" y="232" fill="#94A3B8">got := Add(tt.a, tt.b)</text>
+    <text x="356" y="256" fill="#94A3B8">if got != tt.want {</text>
+    <text x="368" y="280" fill="#CE3262">t.Errorf(…)</text>
+    <text x="356" y="304" fill="#94A3B8">}</text>
+    <text x="344" y="324" fill="#FDDD00">}) }</text>
+  </g>
+
+  <path d="M534 221 L 564 221" stroke="#FDDD00" stroke-width="3" fill="none"/>
+  <path d="M564 213 L 578 221 L 564 229 Z" fill="#FDDD00"/>
+
+  <!-- Report -->
+  <rect x="584" y="96" width="186" height="250" rx="12" fill="#1E293B" stroke="#5DC9E2" stroke-width="2"/>
+  <text x="677" y="124" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#5DC9E2">③ The report</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="12.5">
+    <text x="598" y="160" fill="#E2E8F0">=== RUN TestAdd</text>
+    <rect x="598" y="174" width="158" height="26" rx="6" fill="#00A29C" fill-opacity="0.3"/>
+    <text x="606" y="192" fill="#E2E8F0">PASS  /zeros</text>
+    <rect x="598" y="206" width="158" height="26" rx="6" fill="#00A29C" fill-opacity="0.3"/>
+    <text x="606" y="224" fill="#E2E8F0">PASS  /pos</text>
+    <rect x="598" y="238" width="158" height="26" rx="6" fill="#00A29C" fill-opacity="0.3"/>
+    <text x="606" y="256" fill="#E2E8F0">PASS  /neg</text>
+    <rect x="598" y="270" width="158" height="26" rx="6" fill="#CE3262" fill-opacity="0.35"/>
+    <text x="606" y="288" fill="#E2E8F0">FAIL  /mixed</text>
+    <text x="598" y="324" fill="#94A3B8">each case: own name</text>
+  </g>
+
+  <text x="400" y="384" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#E2E8F0">New case = one new line. Re-run only the failure: <tspan font-family="Consolas, Menlo, monospace" fill="#FDDD00">go test -run 'TestAdd/mixed'</tspan></text>
+</svg>

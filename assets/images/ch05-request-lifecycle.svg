@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" role="img" aria-label="Life of an HTTP request in a Go server: client, http.Server with timeouts, recoverer and logger middleware, ServeMux pattern matching, handler, JSON response; Shutdown drains in-flight requests">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#FDDD00"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#00A29C"/>
+    </marker>
+  </defs>
+  <rect width="800" height="440" rx="18" fill="#0F172A"/>
+  <text x="400" y="40" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#E2E8F0">Life of a request</text>
+  <text x="400" y="63" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#94A3B8">each request runs on its own goroutine, wrapped layer by layer</text>
+
+  <!-- client -->
+  <rect x="24" y="150" width="104" height="120" rx="12" fill="#1E293B" stroke="#94A3B8" stroke-width="2"/>
+  <text x="76" y="190" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#E2E8F0">Client</text>
+  <text x="76" y="214" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="11" fill="#5DC9E2">GET</text>
+  <text x="76" y="230" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="11" fill="#5DC9E2">/items/42</text>
+
+  <!-- server outer -->
+  <rect x="160" y="88" width="616" height="250" rx="16" fill="none" stroke="#00ADD8" stroke-width="2"/>
+  <text x="176" y="112" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#00ADD8">http.Server</text>
+  <text x="270" y="112" font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#94A3B8">ReadHeaderTimeout · ReadTimeout · WriteTimeout · IdleTimeout</text>
+
+  <!-- recoverer -->
+  <rect x="178" y="126" width="580" height="196" rx="14" fill="#1E293B" stroke="#CE3262" stroke-width="1.5"/>
+  <text x="194" y="148" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#CE3262">recoverer  ·  panic → 500</text>
+  <!-- logger -->
+  <rect x="196" y="160" width="544" height="146" rx="12" fill="#0F172A" stroke="#FDDD00" stroke-width="1.5"/>
+  <text x="212" y="182" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#FDDD00">logger  ·  method, path, status, duration</text>
+
+  <!-- mux -->
+  <rect x="214" y="196" width="230" height="94" rx="10" fill="#1E293B" stroke="#5DC9E2" stroke-width="1.5"/>
+  <text x="329" y="218" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#5DC9E2">ServeMux (Go 1.22+)</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="11.5">
+    <text x="228" y="242" fill="#94A3B8">GET  /healthz</text>
+    <rect x="224" y="250" width="210" height="18" rx="4" fill="#00ADD8" fill-opacity="0.25"/>
+    <text x="228" y="263" fill="#E2E8F0">GET  /items/{id}   ✔ match</text>
+    <text x="228" y="283" fill="#94A3B8">POST /items</text>
+  </g>
+
+  <!-- handler -->
+  <rect x="478" y="196" width="246" height="94" rx="10" fill="#1E293B" stroke="#00A29C" stroke-width="1.5"/>
+  <text x="601" y="218" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#00A29C">Handler</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="11.5" fill="#E2E8F0">
+    <text x="490" y="242">id := r.PathValue("id")</text>
+    <text x="490" y="262">it, ok := store.get(id)</text>
+    <text x="490" y="282">writeJSON(w, 200, it)</text>
+  </g>
+
+  <path d="M444 243 L 474 243" stroke="#FDDD00" stroke-width="2.5" marker-end="url(#a)"/>
+  <path d="M130 196 L 174 196" stroke="#FDDD00" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- response path -->
+  <path d="M601 292 L 601 372 L 76 372 L 76 274" stroke="#00A29C" stroke-width="2.5" fill="none" marker-end="url(#b)"/>
+  <rect x="236" y="358" width="280" height="28" rx="8" fill="#0F172A"/>
+  <text x="376" y="377" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="12" fill="#00A29C">200 {"id":"42","name":"gopher plush"}</text>
+
+  <text x="400" y="420" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#94A3B8">srv.Shutdown(ctx): stop accepting, let in-flight requests finish, then return</text>
+</svg>
