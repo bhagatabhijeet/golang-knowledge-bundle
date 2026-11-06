@@ -1,0 +1,8 @@
+package main
+import "fmt"
+func main(){
+nums:=[]int{3,1,2}
+for i,n:=range nums{
+if n>1{fmt.Println(i,n)}
+}
+}

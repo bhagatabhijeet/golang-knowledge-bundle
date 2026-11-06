@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-labelledby="t d">
+  <title id="t">gofmt: one true style</title>
+  <desc id="d">Before and after gofmt. A cramped Go program with no spaces or indentation becomes a neatly indented, consistently spaced program after running gofmt -w.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#FDDD00"/>
+    </marker>
+  </defs>
+  <rect width="800" height="400" rx="20" fill="#0F172A"/>
+  <text x="400" y="46" text-anchor="middle" fill="#E2E8F0" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="24" font-weight="700">gofmt: one true style</text>
+
+  <!-- Before -->
+  <rect x="28" y="70" width="320" height="280" rx="12" fill="#1E293B" stroke="#CE3262" stroke-width="2"/>
+  <text x="46" y="96" fill="#CE3262" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700">BEFORE</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="14" fill="#E2E8F0">
+    <text x="46" y="128">package main</text>
+    <text x="46" y="152">import "fmt"</text>
+    <text x="46" y="176">func main(){</text>
+    <text x="46" y="200">nums:=[]int{3,1,2}</text>
+    <text x="46" y="224">for i,n:=range nums{</text>
+    <text x="46" y="248">if n&gt;1{fmt.Println(i,n)}</text>
+    <text x="46" y="272">}</text>
+    <text x="46" y="296">}</text>
+  </g>
+
+  <!-- Arrow -->
+  <rect x="356" y="186" width="88" height="30" rx="15" fill="#0F172A" stroke="#FDDD00"/>
+  <text x="400" y="206" text-anchor="middle" fill="#FDDD00" font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700">gofmt -w</text>
+  <path d="M362 232 L438 232" stroke="#FDDD00" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- After -->
+  <rect x="452" y="70" width="320" height="280" rx="12" fill="#1E293B" stroke="#00A29C" stroke-width="2"/>
+  <text x="470" y="96" fill="#00A29C" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="700">AFTER</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="13" fill="#E2E8F0">
+    <text x="470" y="122"><tspan fill="#CE3262">package</tspan> main</text>
+    <text x="470" y="160"><tspan fill="#CE3262">import</tspan> <tspan fill="#FDDD00">"fmt"</tspan></text>
+    <text x="470" y="198"><tspan fill="#CE3262">func</tspan> <tspan fill="#5DC9E2">main</tspan>() {</text>
+    <text x="500" y="217">nums := []<tspan fill="#5DC9E2">int</tspan>{3, 1, 2}</text>
+    <text x="500" y="236"><tspan fill="#CE3262">for</tspan> i, n := <tspan fill="#CE3262">range</tspan> nums {</text>
+    <text x="530" y="255"><tspan fill="#CE3262">if</tspan> n &gt; 1 {</text>
+    <text x="560" y="274">fmt.<tspan fill="#5DC9E2">Println</tspan>(i, n)</text>
+    <text x="530" y="293">}</text>
+    <text x="500" y="312">}</text>
+    <text x="470" y="331">}</text>
+  </g>
+
+  <text x="400" y="380" text-anchor="middle" fill="#94A3B8" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15">Tabs, spacing, braces: decided once, for everyone</text>
+</svg>

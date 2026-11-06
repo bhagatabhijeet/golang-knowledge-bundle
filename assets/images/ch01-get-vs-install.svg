@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-labelledby="t d">
+  <title id="t">go get vs go install</title>
+  <desc id="d">go get pkg@v1.6.0 writes a require line to go.mod and checksums to go.sum, changing your project's dependencies. go install pkg@latest builds a tool binary into GOBIN and leaves go.mod untouched. Since Go 1.17, go get is for dependencies and go install is for binaries.</desc>
+  <defs>
+    <marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#FDDD00"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#00ADD8"/>
+    </marker>
+  </defs>
+  <rect width="800" height="380" rx="20" fill="#0F172A"/>
+  <text x="400" y="46" text-anchor="middle" fill="#E2E8F0" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="24" font-weight="700">go get vs go install</text>
+
+  <!-- Left panel -->
+  <rect x="24" y="68" width="368" height="246" rx="14" fill="#1E293B" stroke="#FDDD00" stroke-width="1.5"/>
+  <rect x="64" y="86" width="288" height="40" rx="20" fill="#FDDD00"/>
+  <text x="208" y="112" text-anchor="middle" fill="#0F172A" font-family="Consolas, Menlo, monospace" font-size="16" font-weight="700">go get pkg@v1.6.0</text>
+  <path d="M150 126 L110 162" stroke="#FDDD00" stroke-width="2" marker-end="url(#ay)"/>
+  <path d="M266 126 L300 162" stroke="#FDDD00" stroke-width="2" marker-end="url(#ay)"/>
+  <rect x="40" y="168" width="200" height="84" rx="8" fill="#0F172A" stroke="#5DC9E2"/>
+  <text x="54" y="190" fill="#5DC9E2" font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700">go.mod</text>
+  <text x="54" y="214" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="11">require</text>
+  <text x="54" y="232" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="11">github.com/google/uuid</text>
+  <text x="54" y="246" fill="#FDDD00" font-family="Consolas, Menlo, monospace" font-size="11">v1.6.0</text>
+  <rect x="252" y="168" width="124" height="84" rx="8" fill="#0F172A" stroke="#5DC9E2"/>
+  <text x="266" y="190" fill="#5DC9E2" font-family="Consolas, Menlo, monospace" font-size="13" font-weight="700">go.sum</text>
+  <text x="266" y="214" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="11">h1:NIvaJD…</text>
+  <text x="266" y="232" fill="#94A3B8" font-family="Consolas, Menlo, monospace" font-size="11">h1:TIyPZe…</text>
+  <text x="266" y="246" fill="#94A3B8" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="11">checksums</text>
+  <text x="208" y="290" text-anchor="middle" fill="#E2E8F0" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15">changes your project's dependencies</text>
+
+  <!-- Right panel -->
+  <rect x="408" y="68" width="368" height="246" rx="14" fill="#1E293B" stroke="#00ADD8" stroke-width="1.5"/>
+  <rect x="448" y="86" width="288" height="40" rx="20" fill="#00ADD8"/>
+  <text x="592" y="112" text-anchor="middle" fill="#0F172A" font-family="Consolas, Menlo, monospace" font-size="16" font-weight="700">go install pkg@latest</text>
+  <path d="M592 126 L592 160" stroke="#00ADD8" stroke-width="2" marker-end="url(#ab)"/>
+  <!-- binary icon -->
+  <g transform="translate(520 166)">
+    <rect width="144" height="88" rx="8" fill="#0F172A" stroke="#00ADD8" stroke-width="2"/>
+    <rect width="144" height="20" rx="8" fill="#00ADD8" opacity="0.25"/>
+    <text x="12" y="15" fill="#00ADD8" font-family="Consolas, Menlo, monospace" font-size="11" font-weight="700">$GOBIN</text>
+    <text x="72" y="48" text-anchor="middle" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="13">01101 1001</text>
+    <text x="72" y="72" text-anchor="middle" fill="#FDDD00" font-family="Consolas, Menlo, monospace" font-size="13">staticcheck</text>
+  </g>
+  <text x="440" y="214" fill="#94A3B8" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">go.mod</text>
+  <text x="440" y="230" fill="#94A3B8" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">✗ untouched</text>
+  <text x="592" y="290" text-anchor="middle" fill="#E2E8F0" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15">installs a tool; go.mod untouched</text>
+
+  <!-- Footer -->
+  <text x="400" y="350" text-anchor="middle" fill="#94A3B8" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15">Since Go 1.17: <tspan fill="#FDDD00" font-weight="600">go get</tspan> = dependencies, <tspan fill="#00ADD8" font-weight="600">go install</tspan> = binaries</text>
+</svg>
