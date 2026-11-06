@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-labelledby="t d">
+  <title id="t">The Go Knowledge Bundle</title>
+  <desc id="d">Book cover: a field guide to the Go language, from first line to production concurrency.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1220"/>
+      <stop offset="0.55" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#062A3A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.45" r="0.45">
+      <stop offset="0" stop-color="#00ADD8" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#00ADD8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5DC9E2"/>
+      <stop offset="1" stop-color="#00ADD8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="640" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="640" rx="28" fill="url(#glow)"/>
+
+  <!-- Book spine -->
+  <rect x="0" y="0" width="34" height="640" rx="0" fill="#00ADD8" opacity="0.9"/>
+  <rect x="34" y="0" width="6" height="640" fill="#FDDD00" opacity="0.85"/>
+
+  <!-- Orbit system: goroutines circling a scheduler core -->
+  <g transform="translate(900 300)" fill="none">
+    <ellipse rx="230" ry="230" stroke="#1E293B" stroke-width="2"/>
+    <ellipse rx="175" ry="175" stroke="#334155" stroke-width="2" stroke-dasharray="4 10"/>
+    <ellipse rx="120" ry="120" stroke="#00A29C" stroke-width="2" opacity="0.7"/>
+    <ellipse rx="65" ry="65" stroke="#5DC9E2" stroke-width="2" opacity="0.8"/>
+    <circle r="30" fill="#00ADD8"/>
+    <circle r="30" fill="none" stroke="#E2E8F0" stroke-width="2" opacity="0.4"/>
+    <text y="7" text-anchor="middle" fill="#0F172A" font-family="Consolas, Menlo, monospace" font-size="20" font-weight="700">go</text>
+    <!-- goroutines -->
+    <circle cx="65" cy="0" r="8" fill="#FDDD00"/>
+    <circle cx="-46" cy="46" r="6" fill="#E2E8F0"/>
+    <circle cx="85" cy="-85" r="9" fill="#CE3262"/>
+    <circle cx="-120" cy="0" r="7" fill="#5DC9E2"/>
+    <circle cx="0" cy="120" r="6" fill="#FDDD00"/>
+    <circle cx="124" cy="124" r="8" fill="#00A29C"/>
+    <circle cx="-150" cy="-90" r="6" fill="#E2E8F0"/>
+    <circle cx="-175" cy="0" r="5" fill="#00ADD8"/>
+    <circle cx="0" cy="-230" r="8" fill="#5DC9E2"/>
+    <circle cx="-163" cy="163" r="7" fill="#CE3262"/>
+    <circle cx="215" cy="80" r="6" fill="#FDDD00"/>
+    <circle cx="150" cy="-90" r="5" fill="#E2E8F0"/>
+    <!-- channel arcs -->
+    <path d="M65 0 Q 110 -60 85 -85" stroke="#FDDD00" stroke-width="2" stroke-dasharray="3 6"/>
+    <path d="M-120 0 Q -150 -60 -150 -90" stroke="#5DC9E2" stroke-width="2" stroke-dasharray="3 6"/>
+    <path d="M0 120 Q 70 150 124 124" stroke="#00A29C" stroke-width="2" stroke-dasharray="3 6"/>
+  </g>
+
+  <!-- Code fragment floating -->
+  <g transform="translate(760 520)" font-family="Consolas, Menlo, monospace" font-size="15">
+    <rect x="-10" y="-24" width="290" height="70" rx="10" fill="#1E293B" opacity="0.92"/>
+    <text x="4" y="0" fill="#94A3B8">ch := make(<tspan fill="#5DC9E2">chan</tspan> string)</text>
+    <text x="4" y="26" fill="#94A3B8"><tspan fill="#CE3262">go</tspan> func() { ch &lt;- <tspan fill="#FDDD00">"hello"</tspan> }()</text>
+  </g>
+
+  <!-- Typography -->
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="96" y="110" fill="#FDDD00" font-size="18" font-weight="700" letter-spacing="6">A FIELD GUIDE · OKF KNOWLEDGE BUNDLE</text>
+    <text x="92" y="250" fill="url(#title)" font-size="150" font-weight="800" letter-spacing="-4">Go</text>
+    <text x="96" y="315" fill="#E2E8F0" font-size="44" font-weight="300">From First Line</text>
+    <text x="96" y="368" fill="#E2E8F0" font-size="44" font-weight="300">to <tspan font-weight="700" fill="#5DC9E2">Production</tspan></text>
+    <rect x="96" y="398" width="90" height="5" rx="2" fill="#CE3262"/>
+    <text x="96" y="446" fill="#94A3B8" font-size="21">Simplicity · Concurrency · Craft</text>
+    <text x="96" y="540" fill="#E2E8F0" font-size="18" font-weight="600">6 chapters · runnable examples · hand-drawn diagrams</text>
+    <text x="96" y="570" fill="#94A3B8" font-size="16">Read it front to back like a book — or jump in anywhere.</text>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="1000" height="360" role="img" aria-labelledby="t d">
+  <title id="t">Book map</title>
+  <desc id="d">The six chapters of the book as a road: Getting Started, Language Basics, Types and Abstraction, Concurrency, Production Go, Reference.</desc>
+  <rect width="1000" height="360" rx="22" fill="#0F172A"/>
+  <text x="40" y="52" fill="#E2E8F0" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="24" font-weight="700">Your journey through Go</text>
+  <text x="40" y="80" fill="#94A3B8" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15">Six chapters. Each one builds on the last.</text>
+
+  <!-- Road -->
+  <path d="M90 230 C 220 140, 300 300, 420 220 S 640 140, 740 220 S 880 280, 930 200" fill="none" stroke="#1E293B" stroke-width="26" stroke-linecap="round"/>
+  <path d="M90 230 C 220 140, 300 300, 420 220 S 640 140, 740 220 S 880 280, 930 200" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="10 12"/>
+
+  <g font-family="'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="middle">
+    <!-- 1 -->
+    <circle cx="90" cy="230" r="28" fill="#00ADD8"/>
+    <text x="90" y="239" fill="#0F172A" font-size="24" font-weight="800">1</text>
+    <text x="90" y="290" fill="#E2E8F0" font-size="15" font-weight="600">Getting Started</text>
+    <text x="90" y="310" fill="#94A3B8" font-size="12">setup · hello · modules</text>
+    <!-- 2 -->
+    <circle cx="255" cy="210" r="28" fill="#5DC9E2"/>
+    <text x="255" y="219" fill="#0F172A" font-size="24" font-weight="800">2</text>
+    <text x="255" y="150" fill="#E2E8F0" font-size="15" font-weight="600">Language Basics</text>
+    <text x="255" y="170" fill="#94A3B8" font-size="12">types · funcs · slices</text>
+    <!-- 3 -->
+    <circle cx="420" cy="220" r="28" fill="#00A29C"/>
+    <text x="420" y="229" fill="#0F172A" font-size="24" font-weight="800">3</text>
+    <text x="420" y="280" fill="#E2E8F0" font-size="15" font-weight="600">Types &amp; Abstraction</text>
+    <text x="420" y="300" fill="#94A3B8" font-size="12">interfaces · generics · errors</text>
+    <!-- 4 -->
+    <circle cx="590" cy="180" r="28" fill="#CE3262"/>
+    <text x="590" y="189" fill="#0F172A" font-size="24" font-weight="800">4</text>
+    <text x="590" y="116" fill="#E2E8F0" font-size="15" font-weight="600">Concurrency</text>
+    <text x="590" y="135" fill="#94A3B8" font-size="12">goroutines · channels · context</text>
+    <!-- 5 -->
+    <circle cx="760" cy="226" r="28" fill="#FDDD00"/>
+    <text x="760" y="235" fill="#0F172A" font-size="24" font-weight="800">5</text>
+    <text x="760" y="286" fill="#E2E8F0" font-size="15" font-weight="600">Production Go</text>
+    <text x="760" y="306" fill="#94A3B8" font-size="12">tests · profiling · HTTP</text>
+    <!-- 6 -->
+    <circle cx="930" cy="200" r="28" fill="#E2E8F0"/>
+    <text x="930" y="209" fill="#0F172A" font-size="24" font-weight="800">6</text>
+    <text x="900" y="150" fill="#E2E8F0" font-size="15" font-weight="600">Reference</text>
+    <text x="900" y="168" fill="#94A3B8" font-size="12">cheatsheet · gotchas</text>
+  </g>
+</svg>
